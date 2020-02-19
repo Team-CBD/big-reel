@@ -12,21 +12,48 @@ button:focus {
 button:hover {
     background-color: #d1573c!important;
 }
+.btn {
+    background-color: #d1573c!important;
+}
+.btn:focus {
+    background-color: #db6c53!important;
+}
+.btn:hover {
+    background-color: #bb4d34!important;
+}
 .input-field>label {
     color: #4b6f4d;
 }
 .rbagreen {
     background-color: #4b6f4d;
 }
+.rbagreentxt {
+    color: #4b6f4d;
+}
 .rbared {
     background-color: #c45237;
 }
+.rbaredtxt {
+    color: #c45237;
+}
 .rbatan {
     background-color: #b3ab75;
+}
+.rbatantxt {
+    color: #b3ab75;
 }
 .round-7 {
     border-radius:7px!important;
 }
 nav {
     position: relative;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+}
+.fa-facebook-square {
+    font-size:64px;
+    color:#3b5998;
+    
 }
