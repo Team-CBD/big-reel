@@ -1,27 +1,35 @@
 "use strict"
 module.exports = function(sequelize, DataTypes)
 {
-    var catchHistory = sequelize.define("Catch History", 
+    var rig = sequelize.define("Rig",
     {
         id:
         {
             type: DataTypes.INTEGER,
-            primaryKey: true,
+            autoIncrement: true,
             allowNull: false,
-            autoIncrement: true
+            primaryKey: true
         },
-        fish_type:
+        currentRod:
         {
             type: DataTypes.STRING
         },
-        location:
+        currentBait:
+        {
+            type: DataTypes.STRING
+        },
+        currentBaitAmount:
         {
             type: DataTypes.INTEGER
         },
-        userId:
+        currentLure:
+        {
+            type: DataTypes.String
+        },
+        currentLureAmount:
         {
             type: DataTypes.INTEGER
         }
     });
-    return catchHistory;
-};
+    return rig;
+}

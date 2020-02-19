@@ -14,13 +14,25 @@ module.exports = function(sequelize, DataTypes)
         {
             type: DataTypes.STRING
         },
+        rodAmount:
+        {
+            type: DataTypes.INTEGER
+        },
         bait:
         {
             type: DataTypes.STRING
         },
+        baitAmount:
+        {
+            type: DataTypes.INTEGER
+        },
         lure:
         {
             type: DataTypes.STRING
+        },
+        lureAmount:
+        {
+            type: DataTypes.INTEGER
         }
     });
     return tackleBox;
