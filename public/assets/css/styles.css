@@ -67,3 +67,24 @@ footer {
     color:#dd2a7b;
     
 }
+.loader {
+    background: none repeat scroll 0 0 #ffffff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999; 
+}
+.loader .loader_inner {
+    background-image: url("../img/fushygifcorew.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    position: absolute; 
+}
