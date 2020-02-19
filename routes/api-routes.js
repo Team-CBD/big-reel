@@ -1,6 +1,5 @@
 var db = require("../models");
 const sequelize_fixtures = require("sequelize-fixtures");
-const profileModel = require("../models/index.js")
 
 module.exports = function(app)
 {
@@ -9,7 +8,7 @@ module.exports = function(app)
         sequelize_fixtures.loadFile("./fixtures/test.js", db).then(function()
         {
             db.profile.findAll({
-                attributes: ["id", "username"]
+                attributes: ["id", "username", "firstName", "lastName"]
             })
             .then(function(result)
             {
@@ -35,7 +34,18 @@ module.exports = function(app)
     app.get("/api/tackle", function(req, res)
     {
         db.tackleBox.findAll({
-            attributes: ["id", "rod", "bait", "lure"]
+            attributes: ["id", "rod", "rodAmount", "bait", "baitAmount", "lure", "lureAmount"]
+        })
+        .then(function(result)
+        {
+            res.json(result);
+        });
+    });
+
+    app.get("/api/rig", function(req, res)
+    {
+        db.rig.findAll({
+            attributes: ["id", "currentRod", "currentBait", "currentBaitAmount", "currentLure", "currentLureAmount"]
         })
         .then(function(result)
         {
