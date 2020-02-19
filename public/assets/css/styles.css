@@ -27,3 +27,6 @@ button:hover {
 .round-7 {
     border-radius:7px!important;
 }
+nav {
+    position: relative;
+}
