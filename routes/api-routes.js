@@ -1,70 +1,45 @@
 var db = require("../models");
+const sequelize_fixtures = require("sequelize-fixtures");
+const profileModel = require("../models/index.js")
 
-module.exports = function(app) {
-  
-  ////User CRUD
-  // Get a user profile
-  app.get("/api/:user", function(req, res) {
-    db.User.findAll({}).then(function(user) {
-      res.json(user);
+module.exports = function(app)
+{
+    app.get("/api/profile", function(req, res)
+    {
+        sequelize_fixtures.loadFile("./fixtures/test.js", db).then(function()
+        {
+            db.profile.findAll({
+                attributes: ["id", "username"]
+            })
+            .then(function(result)
+            {
+                res.json(result);
+            });
+        });
     });
-  });
 
-  // Create a new user profile
-  app.post("/api/:user", function(req, res) {
-    db.Example.create(req.body).then(function(user) {
-      res.json(user);
+    app.get("/api/catch", function(req, res)
+    {
+        sequelize_fixtures.loadFile("./fixtures/test catch.js", db).then(function()
+        {
+            db.catchHistory.findAll({
+                attributes: ["id", "fish_type", "location"]
+            })
+            .then(function(result)
+            {
+                res.json(result);
+            });
+        });
     });
-  });
 
-  // Delete a user by id
-  // app.delete("/api/user/:id", function(req, res) {
-  //   db.catch.destroy({ where: { id: req.params.id } }).then(function(dbCatch) {
-  //     res.json(dbCatch);
-  //   });
-  // });
-
-  //// Catch CRUD
-  //get user's catch history
-  app.get("/api/:user/catches", function(req, res) {
-    db.Catches.findAll({}).then(function(dbCatches) {
-      res.json(dbCatches);
+    app.get("/api/tackle", function(req, res)
+    {
+        db.tackleBox.findAll({
+            attributes: ["id", "rod", "bait", "lure"]
+        })
+        .then(function(result)
+        {
+            res.json(result);
+        });
     });
-  });
-
-  // Create a new catch
-  app.post("/api/:user/:catches", function(req, res) {
-    db.Catches.create(req.body).then(function(dbCatches) {
-      res.json(Catches);
-    });
-  });
-
-  // Delete a catch by id
-  app.delete("/api/:user/:id", function(req, res) {
-    db.Catches.destroy({ where: { id: req.params.id } }).then(function(dbCatches) {
-      res.json(dbCatches);
-    });
-  });
-
-  //// Tackle box CRUD
-  //get user's catch history
-  app.get("/api/:user/tackle-box", function(req, res) {
-    db.Catches.findAll({}).then(function(dbCatches) {
-      res.json(dbCatches);
-    });
-  });
-
-  // Create a new Tackle box
-  app.post("/api/:user/:tackle-box", function(req, res) {
-    db.Catches.create(req.body).then(function(dbCatches) {
-      res.json(Catches);
-    });
-  });
-
-  // Delete a tackle box by id
-  app.delete("/api/:user/:id", function(req, res) {
-    db.Catches.destroy({ where: { id: req.params.id } }).then(function(dbCatches) {
-      res.json(dbCatches);
-    });
-  });
-};
+}
