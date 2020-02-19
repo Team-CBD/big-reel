@@ -33,7 +33,7 @@
   
    // Handle Submit Function for creating Google Maps Markers on current location
       function fishDataSubmit() {
-        console.log('fishlocationbutton triggered!');
+        
   
         navigator.geolocation.getCurrentPosition(function (position) {
           // get CURRENT location
@@ -47,10 +47,14 @@
           var fishType = $("#fishType").val();
           var baitType = $("#baitType").val();
   
+        // icon link 
+         var image = "http://maps.google.com/mapfiles/kml/shapes/fishing.png";
+
           // create a new google Maps marker
           var newMarker = new google.maps.Marker({
             position: currentPosition,
             map: map,
+            icon: image,
           }).addListener('click', function () {
             map.setCenter(this.getPosition())
             infoWindow.setPosition(this.getPosition());
@@ -60,7 +64,7 @@
   
           // add our new marker to the marker array
        
-          fishingMarkers.push(newMarker);
+          fishingMarker.push(newMarker);
         })
   
       }
