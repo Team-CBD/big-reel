@@ -17,22 +17,40 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./public/assets/css/styles.css">
         <link rel="icon" type="image/png" href="./public/assets/img/socialRBA1lined.png">
-        <script src="./public/assets/js/loader.js"></script>
-
     </head>
-  <body>
-    <div class="container">
+  
+    <body onload="myFunction()">
+        <div class="container">
         <div class="row">
-            <div class="col s12 m6">
-                <a href="./public/logIn.html"><img href="./public/logIn.html" src="./public/assets/img/loginmockA.png" width="100%" height="auto"></a>
-            </div>
+        <div class="col">
+        <img id="loader" src="./public/assets/img/fushygifcorew.gif">
         </div>
-    </div>
-    <script>
-        var image1 = new Image();
-        image1.src = '../img/fushygifcorew.gif';
+        <div style="display:none;" id="myDiv" class="animate-bottom">
+            
+        <div class="col s6 m6">
+            <a id="indexload" href="./public/logIn.html"><img href="./public/logIn.html" src="./public/assets/img/loginmockA.png" width="100%" height="auto"></a>
+        </div>
+              
+        </div>
+        </div>
+        </div>
+        <script>
+        var myVar;
+        
+        function myFunction() {
+          myVar = setTimeout(showPage, 3000);
+        }
+        
+        function showPage() {
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("myDiv").style.display = "block";
+        }
+        </script>
+        
+        </body>
 
-    </script>
+
+
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=1666266066926591&autoLogAppEvents=1"></script>
     <!-- Optional JavaScript -->
   </body>
