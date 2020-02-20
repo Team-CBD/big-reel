@@ -4,7 +4,7 @@
           lat: "",
           lng: ""
         },
-        zoom: 15
+        zoom: 12
       });
       infoWindow = new google.maps.InfoWindow;
       // Try HTML5 geolocation.
@@ -64,11 +64,46 @@
   
           // add our new marker to the marker array
        
-          fishingMarker.push(newMarker);
+          fishingMarkers.push(newMarker);
         })
   
       }
   
 
-  
+              //Store our markers
+              // var fishingMarkers = [
+              //   new google.maps.Marker({
+              //     position: {
+              //       lat: 33.856926,
+              //       lng: -117.17437
+              //     },
+              //     map: map,
+              //     icon: image,
+              //   }).addListener('click', function () {
+              //     map.setCenter(this.getPosition())
+              //     infoWindow.setPosition(this.getPosition());
+              //     infoWindow.setContent(`{USER_HERE} has caught: ${fishType} using bait: ${baitType}!`);
+              //     infoWindow.open(map, this);
+              //   }),
+              //   new google.maps.Marker({
+              //     position: {
+              //       lat: 33.856926,
+              //       lng: -117.15437
+              //     },
+              //     map: map,
+              //     icon: image,
+              //   }).addListener('click', function () {
+              //     map.setCenter(this.getPosition())
+              //     infoWindow.setPosition(this.getPosition());
+              //     infoWindow.setContent(`{USER_HERE} has caught: ${fishType} using bait: ${baitType}!`);
+              //     infoWindow.open(map, this);
+              //   })
+          
+              // ]
+               
+              //     fishingMarkers.push(newMarker);
+              //   })
+                
+          
+              // }
 
