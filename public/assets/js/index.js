@@ -1,81 +1,96 @@
 $( document ).ready(function() {
-
   console.log("ready");
+  var map, infoWindow;
+      map = new google.maps.Map(document.getElementById("googleMap"), {
+        center: {
+          lat: "",
+          lng: ""
+        },
+        zoom: 12
+      });
+      infoWindow = new google.maps.InfoWindow;
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+              map.setCenter(pos);
+        }, function () {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+      }
   
-  function pastCatch (fish, bait, latData, lngData){
-    //event handler for catch history to db
-    //$("#fishLocationSubmitButton").on("submit", function(event){
-      //event.preventDefault();
-      console.log("New catch testing");
-
-      var catchData = {
-        fish_type: fish,
-        bait_type: bait,
-        lat: latData,
-        lng: lngData,
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+          'Error: The Geolocation service failed.' :
+          'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
       };
+  
+  $(document).on("click", "#fishLocationSubmitButton", fishDataSubmit);
 
-      //Send the POST for newCatch to db 
-      $.ajax("/api/catch", catchData, {
-        type: "POST",
-        data: catchData
-      }).then({
-        function() {
-          console.log("Created New Catch!");
-          location.reload();
-        }
-      })
-    //})
+  function fishDataSubmit(event) {  
+    event.preventDefault();
+
+    navigator.geolocation.getCurrentPosition(function (position) {
+      // get CURRENT location
+      var currentPosition = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      
+      // Get information for the form and add a popup tip window
+      // Use jquery to grab the form element and get the data
+      var fishType = $("#fishType").val();
+
+      console.log("btn click");
+      
+
+    // icon link 
+     var image = "http://maps.google.com/mapfiles/kml/shapes/fishing.png";
+
+      // create a new google Maps marker
+      var newMarker = new google.maps.Marker({
+        position: currentPosition,
+        map: map,
+        icon: image,
+      }).addListener('click', function () {
+        map.setCenter(this.getPosition())
+        infoWindow.setPosition(this.getPosition());
+        infoWindow.setContent(`{USER_HERE} has caught: ${fishType}!`);
+        infoWindow.open(map, this);
+
+        
+      });
+       
+      /// Need help with POST problem is probably in the api-routes //////////
+        var catchData = {
+
+          fish_type: fishType,
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+          userId: 1
+        };
+  
+        //Send the POST for newCatch to db 
+        $.ajax("/api/CatchHistory", catchData, {
+          type: "POST",
+          data: catchData
+        }).then({
+          function() {
+            console.log("New POSTed Catch!");
+            location.reload();
+          }
+        
+        })
+
+    })
+
   }
-
-  // //function newRig (event) {
-  //   //event handler for catch history to db
-  //   $("#rigSubmitButton").on("submit", function(event){
-  //     event.preventDefault();
-  //     console.log("New rig testing");
-
-  //     var rigData = {
-  //       current_rod: $("#rod").val().trim(),
-  //       current_bait: $("#bait").val().trim(),
-  //       current_lure: $("#lure").val().trim(),
-  //     };
-
-  //     //Send the POST for newRig to db 
-  //     $.ajax("/api/rig", {
-  //       type: "POST",
-  //       data: rigData
-  //     }).then({
-  //       function() {
-  //         console.log("Created New Rig!");
-  //         location.reload();
-  //       }
-  //     })
-  //   })
-  //}
-});
-
-// function pastCatch (fish, bait, latData, lngData){
-//   //event handler for catch history to db
-//   $("#fishLocationSubmitButton").on("submit", function(event){
-//     event.preventDefault();
-//     console.log("New catch testing");
-
-//     var catchData = {
-//       fish_type: fish,
-//       bait_type: bait,
-//       lat: latData,
-//       lng: lngData,
-//     };
-
-//     //Send the POST for newCatch to db 
-//     $.ajax("/api/catch", catchData, {
-//       type: "POST",
-//       data: catchData
-//     }).then({
-//       function() {
-//         console.log("Created New Catch!");
-//         location.reload();
-//       }
-//     })
-//   })
-// }
+})
