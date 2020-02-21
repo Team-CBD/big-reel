@@ -17,9 +17,9 @@ module.exports = function(sequelize, DataTypes)
         },
         rod: DataTypes.STRING,
 
-        bait: DataTypes.STRING,
+        line: DataTypes.STRING,
 
-        lure: DataTypes.STRING,
+        tackle: DataTypes.STRING,
 
         createdAt: 
         {
