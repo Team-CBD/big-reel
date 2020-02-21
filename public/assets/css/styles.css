@@ -74,23 +74,36 @@ footer {
     margin-right:auto;
     border-radius: 50%;
     width: 100%;
+    padding-top:10%;
     height: auto;
     left:0;
 }
-#loader {
-    position: absolute;
+.colz {
+    float: left;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0!important;
+    min-height: 1px;
+}
+.hook {
+    zoom:0.5;
+}
+/*#loader {
+    position: sticky;
     z-index: 2;
     margin-left:auto;
     margin-right:auto;
     border-radius: 50%;
-    width: 60%;
+    width: 26%;
+    padding-top: 10%;
     height:auto;
-    top: 22%;
-    left: 22%;
     -webkit-animation: pause 1s linear infinite;
     animation: pause 1s linear infinite;
+  }*/
+  #toplogo {
+      margin-top: 10%;
+      margin-bottom: 10%;
   }
-  
   
   /* Add animation to "page content" */
   .animate-bottom {
@@ -119,3 +132,50 @@ footer {
   .input-field.col label {
     left: 2.75rem;
   }
+
+  @media only screen and (max-width: 720px) {
+
+  #loader {
+    position: fixed;
+    z-index: 2;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 18%;
+    height: auto;
+    width: 84%;
+    -webkit-animation: pause 1s linear infinite;
+    animation: pause 1s linear infinite;
+        }
+  }
+
+  @media only screen and (min-width: 721px) and (max-width: 1200px) {
+
+    #loader {
+      position: fixed;
+      z-index: 2;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 26%;
+      height: auto;
+      left: 24%;
+      width: 50%;
+      -webkit-animation: pause 1s linear infinite;
+      animation: pause 1s linear infinite;
+          }
+    }
+
+    @media only screen and (min-width: 1201px) {
+
+    #loader {
+        position: fixed;
+        z-index: 2;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 8%;
+        height: auto;
+        width: 40%;
+        padding-left: 19%;
+        -webkit-animation: pause 1s linear infinite;
+        animation: pause 1s linear infinite;
+            }
+    }
