@@ -1,40 +1,43 @@
 "use strict"
 module.exports = function(sequelize, DataTypes)
 {
-    var rig = sequelize.define("Rig",
-    {
+    var Rig = sequelize.define("Rig",{
+    
         rig_id:
         {
             type: DataTypes.INTEGER,
             autoIncrement: true,
-            allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            allowNull: false
         },
-        currentRod:
+        rig_name: 
         {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         },
-        currentBait:
+        rod: DataTypes.STRING,
+
+        bait: DataTypes.STRING,
+
+        lure: DataTypes.STRING,
+
+        createdAt: 
         {
-            type: DataTypes.STRING
+            type: DataTypes.DATE,
+            field: 'beginTime',
+            defaultValue: sequelize.literal('NOW()')
         },
-        currentBaitAmount:
+        updatedAt: 
         {
-            type: DataTypes.INTEGER
-        },
-        currentLure:
-        {
-            type: DataTypes.STRING
-        },
-        currentLureAmount:
-        {
-            type: DataTypes.INTEGER
+            type: DataTypes.DATE,
+            field: 'beginTime',
+            defaultValue: sequelize.literal('NOW()')
         }
-        // foreignKey: {
-        //     id: DataTypes.INTEGER,
-        //     autoIncrement: true,
-        //     allowNull: false
-        // }
+        }, {
+            timestamps: true,
+        
+            freezeTableName: true        
+        
     });
-    return rig;
-}
+    return Rig;
+};
