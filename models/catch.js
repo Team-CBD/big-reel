@@ -14,7 +14,15 @@ module.exports = function(sequelize, DataTypes)
         {
             type: DataTypes.STRING
         },
-        location:
+        bait_type:
+        {
+            type: DataTypes.STRING
+        },
+        lat:
+        {
+            type: DataTypes.INTEGER
+        },
+        lng:
         {
             type: DataTypes.INTEGER
         },

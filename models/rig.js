@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes)
         },
         currentLure:
         {
-            type: DataTypes.String
+            type: DataTypes.STRING
         },
         currentLureAmount:
         {

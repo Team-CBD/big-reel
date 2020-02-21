@@ -22,7 +22,7 @@ module.exports = function(app)
         sequelize_fixtures.loadFile("./fixtures/test catch.js", db).then(function()
         {
             db.catchHistory.findAll({
-                attributes: ["id", "fish_type", "location"]
+                attributes: ["id", "fish_type", "bait_type", "lat", "lng"]
             })
             .then(function(result)
             {
@@ -52,4 +52,25 @@ module.exports = function(app)
             res.json(result);
         });
     });
+
+    app.post("/api/catch", function(req, res) {
+        // Take the request...
+        var newCatchData = req.body;
+    
+        // Create a routeName
+    
+        // Using a RegEx Pattern to remove spaces from newCatchData.name
+        var routeName = newCatchData.name.replace(/\s+/g, "").toLowerCase();
+    
+        // Then add the newCatchData to the database using sequelize
+        newCatchData.create({
+          routeName: routeName + Date.now(),
+          fish_type: newCatchData.fish_type,
+          bait_type: newCatchData.bait_type,
+          lat: newCatchData.lat,
+          lng: newCatchData.lng
+        });
+    
+        res.status(204).end();
+      });
 }
