@@ -34,7 +34,7 @@
       };
   
    // Handle Submit Function for creating Google Maps Markers on current location
-      function fishDataSubmit() {  
+      function fishDataSubmit(event) {  
         navigator.geolocation.getCurrentPosition(function (position) {
           // get CURRENT location
           var currentPosition = {
@@ -116,35 +116,29 @@
                 
           
              
-            $("#fishLocationSubmitButton").on("submit", function(event){
-              event.preventDefault();
-              console.log("New catch testing");
-              
-            });
-            function pastCatch (fish, bait, latData, lngData){
-              //event handler for catch history to db
-              //$("#fishLocationSubmitButton").on("submit", function(event){
-                event.preventDefault();
-                console.log("New catch testing");
-          
-                var catchData = {
-                  fish_type: fish,
-                  bait_type: bait,
-                  lat: latData,
-                  lng: lngData,
-                };
-          
-                //Send the POST for newCatch to db 
-                $.ajax("/api/Catch_History", catchData, {
-                  type: "POST",
-                  data: catchData
-                }).then({
-                  function() {
-                    console.log("Created New Catch!");
-                    location.reload();
-                  }
+  $("#fishLocationSubmitButton").on("submit", function(event){
+    event.preventDefault();
+    console.log("New catch testing");
+    
+    var catchData = {
+      fish_type: fish,
+      bait_type: bait,
+      lat: latData,
+      lng: lngData,
+    };
+
+    //Send the POST for newCatch to db 
+    $.ajax("/api/Catch_Histories", catchData, {
+      type: "POST",
+      data: catchData
+    }).then({
+      function() {
+        console.log("Created New Catch!");
+        location.reload();
+      }
+    
+    })
+    
+  });      
                 
-                })
-            };
-              
-            });
+  });
