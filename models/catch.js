@@ -1,8 +1,7 @@
 "use strict"
 module.exports = function(sequelize, DataTypes)
 {
-    var catchHistory = sequelize.define("Catch_History", 
-    {
+    var CatchHistory = sequelize.define("CatchHistory",{
         catch_id:
         {
             type: DataTypes.INTEGER,
@@ -10,31 +9,31 @@ module.exports = function(sequelize, DataTypes)
             allowNull: false,
             autoIncrement: true
         },
-        fish_type:
+        fish_type: DataTypes.STRING,
+        
+        lat: DataTypes.DECIMAL(10, 7),
+        
+        lng: DataTypes.DECIMAL(10, 7),
+        
+        userId: DataTypes.INTEGER,
+
+        createdAt: 
         {
-            type: DataTypes.STRING
+            type: DataTypes.DATE,
+            field: 'beginTime',
+            defaultValue: sequelize.literal('NOW()')
         },
-        bait_type:
+        updatedAt: 
         {
-            type: DataTypes.STRING
-        },
-        lat:
-        {
-            type: DataTypes.INTEGER
-        },
-        lng:
-        {
-            type: DataTypes.INTEGER
-        },
-        userId:
-        {
-            type: DataTypes.INTEGER
+            type: DataTypes.DATE,
+            field: 'beginTime',
+            defaultValue: sequelize.literal('NOW()')
         }
-        // foreignKey: {
-        //     id: DataTypes.INTEGER,
-        //     autoIncrement: true,
-        //     allowNull: false
-        // }
+        }, {
+            timestamps: true,
+
+            freezeTableName: true 
+        
     });
-    return catchHistory;
+    return CatchHistory;
 };
