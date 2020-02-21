@@ -1,9 +1,9 @@
 "use strict"
 module.exports = function(sequelize, DataTypes)
 {
-    var tackleBox = sequelize.define("Tackle Box",
+    var tackleBox = sequelize.define("Tackle_Box",
     {
-        id:
+        tackle_id:
         {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -13,10 +13,6 @@ module.exports = function(sequelize, DataTypes)
         rod:
         {
             type: DataTypes.STRING
-        },
-        rodAmount:
-        {
-            type: DataTypes.INTEGER
         },
         bait:
         {
@@ -30,9 +26,10 @@ module.exports = function(sequelize, DataTypes)
         {
             type: DataTypes.STRING
         },
-        lureAmount:
-        {
-            type: DataTypes.INTEGER
+        foreignKey: {
+            id: DataTypes.INTEGER,
+            autoIncrement: true,
+            allowNull: false
         }
     });
     return tackleBox;

@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes)
 {
     var profile = sequelize.define("Profile",
     {
-        id:
+        profile_id:
         {
             type: DataTypes.INTEGER,
             primaryKey: true,

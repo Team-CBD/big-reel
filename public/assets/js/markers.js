@@ -41,11 +41,14 @@
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
-  
+          
           // Get information for the form and add a popup tip window
           // Use jquery to grab the form element and get the data
           var fishType = $("#fishType").val();
           var baitType = $("#baitType").val();
+
+          console.log("btn click");
+          
   
         // icon link 
          var image = "http://maps.google.com/mapfiles/kml/shapes/fishing.png";
@@ -60,35 +63,19 @@
             infoWindow.setPosition(this.getPosition());
             infoWindow.setContent(`{USER_HERE} has caught: ${fishType} using bait: ${baitType}!`);
             infoWindow.open(map, this);
+
+            
           })
           console.log(position);
           console.log(position.coords.latitude);
           console.log(position.coords.longitude);
-          // add our new marker to the marker array
+
+          pastCatch(fishType, baitType, position.coords.latitude, position.coords.longitude);
           
-          //post catch in db
-          $("#fishLocationSubmitButton").on("fishDataSubmit", function(event){
-            event.preventDefault();
-            console.log("New catch testing");
-        
-            var newCatch = {
-              fish_type: $("#fishType").val().trim(),
-              bait_type: $("baitType").val().trim(),
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            };
-        
-            //Send the POST for newCatch to db 
-            $.ajax("/api/catch", {
-              type: "POST",
-              data: newCatch
-            }).then({
-              function() {
-                console.log("Created New Catch!");
-                location.reload();
-              }
-            })
-          });
+          // add our new marker to the marker array
+
+          
+
         
        
           //fishingMarkers.push(newMarker);

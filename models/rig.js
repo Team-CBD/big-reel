@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes)
 {
     var rig = sequelize.define("Rig",
     {
-        id:
+        rig_id:
         {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -29,6 +29,11 @@ module.exports = function(sequelize, DataTypes)
         currentLureAmount:
         {
             type: DataTypes.INTEGER
+        },
+        foreignKey: {
+            id: DataTypes.INTEGER,
+            autoIncrement: true,
+            allowNull: false
         }
     });
     return rig;

@@ -1,9 +1,9 @@
 "use strict"
 module.exports = function(sequelize, DataTypes)
 {
-    var catchHistory = sequelize.define("Catch History", 
+    var catchHistory = sequelize.define("Catch_History", 
     {
-        id:
+        catch_id:
         {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -29,6 +29,11 @@ module.exports = function(sequelize, DataTypes)
         userId:
         {
             type: DataTypes.INTEGER
+        },
+        foreignKey: {
+            id: DataTypes.INTEGER,
+            autoIncrement: true,
+            allowNull: false
         }
     });
     return catchHistory;
