@@ -55,12 +55,8 @@ module.exports = function(app)
         // create takes an argument of an object describing the item we want to
         // insert into our table. In this case we just we pass in an object with a text
         // and complete property
-        db.CatchHistory.create({
-            fish_type: req.body.text,
-            lat: newCatch.latData,
-            lng: newCatch.lngData,
-            complete: req.body.complete
-        }).then(function(dbCatchHistory) {
+        db.CatchHistory.create(req.body).then(function(dbCatchHistory) {
+            console.log(dbCatchHistory);
         // We have access to the new catch as an argument inside of the callback function
         res.json(dbCatchHistory);
         res.status(204).end();

@@ -2,7 +2,7 @@
     "development":
     {
         "username": "root",
-        "password": "03121d3a",
+        "password": "12121212!",
         "database": "reelbig_db",
         "host": "127.0.0.1",
         "port": 3306,
@@ -12,7 +12,7 @@
     "test":
     {
         "username": "root",
-        "password": "03121d3a",
+        "password": "12121212!",
         "database": "database_test",
         "host": "127.0.0.1",
         "port": 3306,

@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes)
         
         lng: DataTypes.DECIMAL(10, 7),
         
-        userId: DataTypes.INTEGER,
+        //userId: DataTypes.INTEGER,
 
         createdAt: 
         {
