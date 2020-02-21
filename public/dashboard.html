@@ -47,56 +47,55 @@
             <!-- Submit Button  -->
             <img class="center" width="150px" height="150px" src="../public/assets/img/hookreal1024.png"
                 id="fishLocationSubmitButton" type="button" onclick="fishDataSubmit()">
-                
+
         </div>
         <div class="col s3 m3">
-        </br>
+            </br>
             <a class="col s4 m4 offset-s1" id="modalBtn"><img src="./assets/img/tacklebox.png" width="150px"></a>
         </div>
         <div id="rigModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-            <div class="container round-7">
-                <form action="">
-                    <label for="label">Label:</label><br>
-                    <input type="text" id="label" name="label" value=""><br>
-                    <label for="rod">Rod:</label><br>
-                    <input type="text" id="rod" name="rod" value=""><br>
-                    <label for="reel">Reel:</label><br>
-                    <input type="text" id="reel" name="reel" value=""><br>
-                    <label for="tackle">Tackle:</label><br>
-                    <input type="text" id="tackle" name="tackle" value=""><br>
-                    <label for="info">Info:</label><br>
-                    <input type="text" id="info" name="info" value=""><br><br>
-                    <input class="close" type="submit" value="Submit">
-                  </form> 
-            </div>
+                <div class="container round-7">
+                    <form action="">
+                        <label for="label">Label:</label><br>
+                        <input type="text" id="label" name="label" value=""><br>
+                        <label for="rod">Rod:</label><br>
+                        <input type="text" id="rod" name="rod" value=""><br>
+                        <label for="reel">Reel:</label><br>
+                        <input type="text" id="reel" name="reel" value=""><br>
+                        <label for="tackle">Tackle:</label><br>
+                        <input type="text" id="tackle" name="tackle" value=""><br>
+                        <label for="info">Info:</label><br>
+                        <input type="text" id="info" name="info" value=""><br><br>
+                        <input class="close" type="submit" value="Submit">
+                    </form>
+                </div>
             </div>
         </div>
         <div id="social" class="center">
 
-         
+
             </br>
-                <div class="col s2 offset-s1">
+            <div class="col s2 offset-s1">
 
-                    <a class="fab fa-facebook-square"
-                        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"></a>
-                </div>
+                <a class="fab fa-facebook-square"
+                target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"></a>
+            </div>
 
-                <div class="col s2">
+            <div class="col s2">
 
-                    <i class="fab fa-twitter-square" aria-hidden="true"></i>
+                <a href="https://twitter.com/intent/tweet?button_hashtag=button&ref_src=twsrc%5Etfw"
+                    class="fab fa-twitter-square" target="_blank" data-show-count="false"></a>
 
-                </div>
+            </div>
 
-                <div class="col s2">
+            <div class="col s2">
+
+                <a href="http://instagram.com" class="fab fa-instagram" target="_blank" data-show-count="false"></a>
+            </div>
 
 
-                    <i class="fab fa-instagram" aria-hidden="true"></i>
-
-                </div>
-
-           
         </div>
     </div>
 
@@ -141,78 +140,78 @@
                 </div>
 
             </div>
-        <p></br></br></p>
-        <!--Below is a sample catchlog list-->
-        <div class="row" id="catchlog">
-            <div class="col colz s3">
+            <p></br></br></p>
+            <!--Below is a sample catchlog list-->
+            <div class="row" id="catchlog">
+                <div class="col colz s3">
 
-                <div class="card">
-                    <div class="card-content black-text">
-                        <span>Bass</span>
+                    <div class="card">
+                        <div class="card-content black-text">
+                            <span>Bass</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col colz s3">
+
+                    <div class="card">
+                        <div class="card-content black-text">
+                            <span>Rig Alpha</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col colz s3">
+
+                    <div class="card">
+                        <div class="card-content black-text">
+                            <span>2/5 5am</span>
+                        </div>
                     </div>
                 </div>
 
-            </div>
+                <div class="col colz s3">
 
-            <div class="col colz s3">
-
-                <div class="card">
-                    <div class="card-content black-text">
-                        <span>Rig Alpha</span>
+                    <div class="card">
+                        <div class="card-content black-text">
+                            <span>33 x 45 N</span>
+                        </div>
                     </div>
+
                 </div>
-
-            </div>
-
-            <div class="col colz s3">
-
-                <div class="card">
-                    <div class="card-content black-text">
-                        <span>2/5 5am</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col colz s3">
-
-                <div class="card">
-                    <div class="card-content black-text">
-                        <span>33 x 45 N</span>
-                    </div>
-                </div>
-
             </div>
         </div>
-        </div>
-        
+
     </div>
     <script>
         // Get the modal
         var modal = document.getElementById("rigModal");
-        
+
         // Get the button that opens the modal
         var btn = document.getElementById("modalBtn");
-        
+
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
-        
+
         // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-          modal.style.display = "block";
+        btn.onclick = function () {
+            modal.style.display = "block";
         }
-        
+
         // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-          modal.style.display = "none";
-        }
-        
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-          if (event.target == modal) {
+        span.onclick = function () {
             modal.style.display = "none";
-          }
         }
-        </script>
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
     <!--JavaScript at end of body for optimized loading-->
 
     <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
@@ -229,7 +228,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
         </script>
-
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 </body>
