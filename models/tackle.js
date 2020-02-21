@@ -1,32 +1,42 @@
 "use strict"
 module.exports = function(sequelize, DataTypes)
 {
-    var tackleBox = sequelize.define("Tackle_Box",
+    var Tackle = sequelize.define("Tackle",
     {
-        tackle_id:
+        Tackle_id:
         {
             type: DataTypes.INTEGER,
             autoIncrement: true,
-            primaryKey: true,
-            allowNull: false
+            allowNull: false,
+            primaryKey: true
         },
-        rod:
+        currentRod: DataTypes.STRING,
+
+        currentBait: DataTypes.STRING,
+
+        currentBaitAmount: DataTypes.INTEGER,
+
+        currentLure: DataTypes.STRING, 
+
+        currentLureAmount: DataTypes.INTEGER,
+
+        createdAt: 
         {
-            type: DataTypes.STRING
+            type: DataTypes.DATE,
+            field: 'beginTime',
+            defaultValue: sequelize.literal('NOW()')
         },
-        bait:
+        updatedAt: 
         {
-            type: DataTypes.STRING
-        },
-        baitAmount:
-        {
-            type: DataTypes.INTEGER
-        },
-        lure:
-        {
-            type: DataTypes.STRING
+            type: DataTypes.DATE,
+            field: 'beginTime',
+            defaultValue: sequelize.literal('NOW()')
         }
+        }, {
+          timestamps: true,
+
+          freezeTableName: true
         
     });
-    return tackleBox;
-};
+    return Tackle;
+}
