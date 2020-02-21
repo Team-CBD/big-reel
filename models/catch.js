@@ -1,7 +1,7 @@
 "use strict"
 module.exports = function(sequelize, DataTypes)
 {
-    var catchHistory = sequelize.define("Catch History", 
+    var catchHistory = sequelize.define("Catch_History", 
     {
         id:
         {

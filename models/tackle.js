@@ -1,7 +1,7 @@
 "use strict"
 module.exports = function(sequelize, DataTypes)
 {
-    var tackleBox = sequelize.define("Tackle Box",
+    var tackleBox = sequelize.define("Tackle_Box",
     {
         id:
         {
