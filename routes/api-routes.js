@@ -3,7 +3,7 @@ const sequelize_fixtures = require("sequelize-fixtures");
 
 module.exports = function(app)
 {
-    app.get("/api/profile", function(req, res)
+    app.get("/api/User", function(req, res)
     {
         sequelize_fixtures.loadFile("./fixtures/test.js", db).then(function()
         {
@@ -17,19 +17,7 @@ module.exports = function(app)
         });
     });
 
-    // app.get("/api/catch", function(req, res)
-    // {
-    //     sequelize_fixtures.loadFile("./fixtures/test catch.js", db).then(function()
-    //     {
-    //         db.catchHistory.findAll({
-    //             attributes: ["id", "currentRod", "current_bait", "current_lure", "lng"]
-    //         })
-    //         .then(function(result)
-    //         {
-    //             res.json(result);
-    //         });
-    //     });
-    // });
+    
 
     app.get("/api/tackle", function(req, res)
     {
@@ -53,46 +41,35 @@ module.exports = function(app)
         });
     });
 
-    app.post("/api/catch", function(req, res) {
-        // Take the request...
-        var newCatch = req.body;
-    
-        // Create a routeName
-    
-        // Using a RegEx Pattern to remove spaces from newRig.name
-        var routeName = newCatch.name.replace(/\s+/g, "").toLowerCase();
-    
-        // Then add the newRig to the database using sequelize
-        newCatch.create({
-          routeName: routeName + Date.now(),
-          currentRod: newCatch.currentRod,
-          current_bait: newCatch.current_bait,
-          current_lure: newCatch.current_lure,
-          lng: newRig.lng
+    // GET route for getting all of the catches
+    app.get("/api/CatchHistory", function(req, res) {
+        // findAll returns all entries for a table when used with no options
+        db.CatchHistory.findAll({}).then(function(dbCatchHistory) {
+        // We have access to the catches as an argument inside of the callback function
+        res.json(dbCatchHistory);
         });
-    
-        res.status(204).end();
-      });
+    });
 
-      app.post("/api/rig", function(req, res) {
-        // Take the request...
-        var newRig = req.body;
-    
-        // Create a routeName
-    
-        // Using a RegEx Pattern to remove spaces from newRig.name
-        var routeName = newRig.name.replace(/\s+/g, "").toLowerCase();
-    
-        // Then add the newRig to the database using sequelize
-        newRig.create({
-          routeName: routeName + Date.now(),
-          currentRod: newRig.currentRod,
-          current_bait: newRig.current_bait,
-          current_lure: newRig.current_lure
-        });
-    
+    // POST route for saving a new catch
+    app.post("/api/CatchHistory", function(req, res) {
+        // create takes an argument of an object describing the item we want to
+        // insert into our table. In this case we just we pass in an object with a text
+        // and complete property
+        db.CatchHistory.create({
+            fish_type: req.body.text,
+            lat: newCatch.latData,
+            lng: newCatch.lngData,
+            complete: req.body.complete
+        }).then(function(dbCatchHistory) {
+        // We have access to the new catch as an argument inside of the callback function
+        res.json(dbCatchHistory);
         res.status(204).end();
-      });
+        });
+    });
+
+    
+
+      
 
     //   // Table join for catch history
     //   app.get('/users', (req, res) => {
