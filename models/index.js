@@ -37,10 +37,10 @@ Object.keys(db).forEach(function(modelName)
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-db.profile = require("../models/fish.js")(sequelize, Sequelize);
-db.tackleBox = require("../models/tackle.js")(sequelize, Sequelize);
-db.catchHistory = require("../models/catch.js")(sequelize, Sequelize);
-//db.location = require("../models/location.js")(sequelize, Sequelize);
+db.CatchHistory = require("./catch.js")(sequelize, Sequelize);
+db.Rig = require("./rig.js")(sequelize, Sequelize);
+db.Tackle = require("./tackle.js")(sequelize, Sequelize);
+db.User = require("./user.js")(sequelize, Sequelize);
 //dependencies go here possibly
 
 module.exports = db;
