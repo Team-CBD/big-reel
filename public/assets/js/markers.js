@@ -66,29 +66,7 @@
           console.log(position.coords.longitude);
           // add our new marker to the marker array
           
-          //post catch in db
-          $("#fishLocationSubmitButton").on("fishDataSubmit", function(event){
-            event.preventDefault();
-            console.log("New catch testing");
-        
-            var newCatch = {
-              fish_type: $("#fishType").val().trim(),
-              bait_type: $("baitType").val().trim(),
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            };
-        
-            //Send the POST for newCatch to db 
-            $.ajax("/api/catch", {
-              type: "POST",
-              data: newCatch
-            }).then({
-              function() {
-                console.log("Created New Catch!");
-                location.reload();
-              }
-            })
-          });
+
         
        
           //fishingMarkers.push(newMarker);
