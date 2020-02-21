@@ -25,12 +25,8 @@ module.exports = function(sequelize, DataTypes)
         lure:
         {
             type: DataTypes.STRING
-        },
-        foreignKey: {
-            id: DataTypes.INTEGER,
-            autoIncrement: true,
-            allowNull: false
         }
+        
     });
     return tackleBox;
 };

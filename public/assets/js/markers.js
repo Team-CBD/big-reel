@@ -1,3 +1,5 @@
+  $(document).ready(function(){
+
   var map, infoWindow;
       map = new google.maps.Map(document.getElementById("googleMap"), {
         center: {
@@ -29,12 +31,10 @@
           'Error: The Geolocation service failed.' :
           'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
-      }
+      };
   
    // Handle Submit Function for creating Google Maps Markers on current location
-      function fishDataSubmit() {
-        
-  
+      function fishDataSubmit() {  
         navigator.geolocation.getCurrentPosition(function (position) {
           // get CURRENT location
           var currentPosition = {
@@ -71,13 +71,9 @@
           console.log(position.coords.longitude);
 
           pastCatch(fishType, baitType, position.coords.latitude, position.coords.longitude);
-          
+          console.log("testing");
           // add our new marker to the marker array
 
-          
-
-        
-       
           //fishingMarkers.push(newMarker);
         })
   
@@ -119,5 +115,36 @@
               //   })
                 
           
-              // }
-
+             
+            $("#fishLocationSubmitButton").on("submit", function(event){
+              event.preventDefault();
+              console.log("New catch testing");
+              
+            });
+            function pastCatch (fish, bait, latData, lngData){
+              //event handler for catch history to db
+              //$("#fishLocationSubmitButton").on("submit", function(event){
+                event.preventDefault();
+                console.log("New catch testing");
+          
+                var catchData = {
+                  fish_type: fish,
+                  bait_type: bait,
+                  lat: latData,
+                  lng: lngData,
+                };
+          
+                //Send the POST for newCatch to db 
+                $.ajax("/api/Catch_History", catchData, {
+                  type: "POST",
+                  data: catchData
+                }).then({
+                  function() {
+                    console.log("Created New Catch!");
+                    location.reload();
+                  }
+                
+                })
+            };
+              
+            });

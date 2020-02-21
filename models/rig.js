@@ -29,12 +29,12 @@ module.exports = function(sequelize, DataTypes)
         currentLureAmount:
         {
             type: DataTypes.INTEGER
-        },
-        foreignKey: {
-            id: DataTypes.INTEGER,
-            autoIncrement: true,
-            allowNull: false
         }
+        // foreignKey: {
+        //     id: DataTypes.INTEGER,
+        //     autoIncrement: true,
+        //     allowNull: false
+        // }
     });
     return rig;
 }
