@@ -55,13 +55,13 @@ module.exports = function(app)
         // create takes an argument of an object describing the item we want to
         // insert into our table. In this case we just we pass in an object with a text
         // and complete property
-        let { fish_type, lat, lng } = req.body;
+        let { fish_type, lat, lng, rig_type } = req.body;
 
         db.CatchHistory.create({
             fish_type,
             lat,
             lng,
-            rig_name
+            rig_type
         })
         .then(function(){
             console.log("New catch added!");
@@ -75,13 +75,9 @@ module.exports = function(app)
     // Take the request...
     var newRig = req.body;
 
-    // Create a routeName
-    // Using a RegEx Pattern to remove spaces from newRig.name
-    var routeName = newRig.rig_name.replace(/\s+/g, "").toLowerCase();
 
     // Then add the rig to the database using sequelize
     db.Rig.create({
-      routeName: routeName,
       rig_name: newRig.rig_name,
       rod: newRig.rod,
       reel: newRig.reel,
