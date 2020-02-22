@@ -50,8 +50,9 @@ $(document).ready(function () {
 
       // Get information for the form and add a popup tip window
       // Use jquery to grab the form element and get the data
-      var fishType = "PLACEHOLDER";
-      //var fishType = `$("#fishType").val()`;
+      //var fishType = "PLACEHOLDER";
+      var fishType = $("#fishType").val();
+      var rigName = $("#rigName").val();
 
       console.log(fishType);
 
@@ -75,9 +76,10 @@ $(document).ready(function () {
 
       /// Need help with POST problem is probably in the api-routes //////////
       var catchData = {
-        fish_type: "BASS",
+        fish_type: fishType,
         lat: parseFloat(position.coords.latitude),
-        lng: parseFloat(position.coords.longitude)
+        lng: parseFloat(position.coords.longitude),
+        rig_id: rigName
       };
       
       console.log(catchData);
