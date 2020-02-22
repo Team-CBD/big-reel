@@ -65,14 +65,13 @@ $(document).ready(function () {
         position: currentPosition,
         map: map,
         icon: image,
-      }).addListener('click', function () {
+      });
         map.setCenter(this.getPosition())
         infoWindow.setPosition(this.getPosition());
         infoWindow.setContent(`{USER_HERE} has caught: ${fishType}!`);
         infoWindow.open(map, this);
 
 
-      });
 
       /// Need help with POST problem is probably in the api-routes //////////
       var catchData = {

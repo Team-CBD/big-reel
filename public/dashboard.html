@@ -60,10 +60,10 @@
                         <div class="container round-7">
                             <form action="/api/CatchHistory" method="POST">
                                 <label for="fish_type">Fish Type:</label><br>
-                                <input type="text" id="fish_type" name="fish_type"><br>
+                                <input type="text" id="fish_type" name="fish_type" value=""><br>
                                 <label for="rig_type">Rig:</label><br>
-                                <input type="text" id="rig_type" name="rig_type"><br>
-                                <button class="close btn btn-success" id="fishLocationSubmitButton" type="submit">SAVE</button>
+                                <input type="text" id="rig_type" name="rig_type" value=""><br>
+                                <button class="close btn btn-success" id="fishLocationSubmitButton" type="submit" onClick="this.form.reset()">SAVE</button>
                             </form>
                         </div>
                     </div>
@@ -78,16 +78,16 @@
                         <div class="container round-7">
                             <form action="/api/Rig" method="POST">
                                 <label for="rig_name">Rig Name:</label><br>
-                                <input type="text" id="rig_name" name="rig_name"><br>
+                                <input type="text" id="rig_name" name="rig_name" value=""><br>
                                 <label for="rod">Rod:</label><br>
-                                <input type="text" id="rod" name="rod"><br>
+                                <input type="text" id="rod" name="rod" value=""><br>
                                 <label for="reel">Line:</label><br>
-                                <input type="text" id="reel" name="reel"><br>
+                                <input type="text" id="reel" name="reel" value=""><br>
                                 <label for="tackle">Tackle:</label><br>
-                                <input type="text" id="tackle" name="tackle"><br>
+                                <input type="text" id="tackle" name="tackle" value=""><br>
                                 <label for="info">Conditions:</label><br>
-                                <input type="text" id="info" name="info"><br><br>
-                                <button class="close btn btn-success" id="rigBtn" type="submit" value="Save">SAVE</button>
+                                <input type="text" id="info" name="info" value=""><br><br>
+                                <button class="close btn btn-success" id="rigBtn" type="submit" value="Save" onClick="this.form.reset()">SAVE</button>
                             </form>
                         </div>
                     </div>
