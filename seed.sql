@@ -1,16 +1,16 @@
 USE reelbig_db;
 
-INSERT INTO catchhistory (fish_type, lat, lng) 
-VALUES ("bass", 33.866136, -117.181405); 
+INSERT INTO catchhistory (fish_type, rig_type, lat, lng) 
+VALUES ("bass", "Alpha", 33.866136, -117.181405); 
 
-INSERT INTO catchhistory (fish_type, lat, lng) 
-VALUES ("trout", 33.868832, -117.160453);
+INSERT INTO catchhistory (fish_type, rig_type, lat, lng) 
+VALUES ("trout", "Beta", 33.868832, -117.160453);
 
-INSERT INTO catchhistory (fish_type, lat, lng) 
-VALUES ("bass", 33.864458, -117.166086);
+INSERT INTO catchhistory (fish_type, rig_type, lat, lng) 
+VALUES ("bass", "Gamma", 33.864458, -117.166086);
 
-INSERT INTO catchhistory (fish_type, lat, lng) 
-VALUES ("bass", 33.863995, -117.173971);
+INSERT INTO catchhistory (fish_type, rig_type, lat, lng) 
+VALUES ("bass", "Omega", 33.863995, -117.173971);
 
 INSERT INTO user (username) VALUES ("Sally951");
 INSERT INTO user (username) VALUES ("Bob123");

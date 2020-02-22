@@ -104,7 +104,11 @@ $(document).ready(function () {
         var timeCatchDiv = $("<div>").addClass("catchList").attr("id", "time-catchList-" + i);
         $("#timeCatch").append(timeCatchDiv).append(data[i].createdAt);
         console.log(data[i].createdAt);
+        var rigCatchDiv = $("<div>").addClass("catchList").attr("id", "rig-catchList-" + i);
+        $("#rigCatch").append(rigCatchDiv).append(data[i].rig_type);
         //DataTimeForma
+        var locCatchDiv = $("<div>").addClass("catchList").attr("id", "loc-catchList-" + i);
+        $("#locCatch").append(locCatchDiv).append(Math.round(data[i].lat) + " x " + Math.round(data[i].lng));
       navigator.geolocation.getCurrentPosition(function (position) {
         // get CURRENT location
         
@@ -134,8 +138,7 @@ $(document).ready(function () {
         });
         
 
-        // var rigCatchDiv = $(<"div">).addClass("catchList").attr("id", "rig-catchList-" + i);
-        // $("#rigCatch").append(rigCatchDiv).append(data[i].rig);
+         
 
         
 
