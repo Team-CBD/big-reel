@@ -45,10 +45,10 @@ db.User = require("./user.js")(sequelize, Sequelize);
 
 
 
-//Relations
-db.Rig.belongsTo(db.CatchHistory);
-db.CatchHistory.hasMany(db.Rig);
-db.CatchHistory.belongsTo(db.User);
-db.User.hasMany(db.CatchHistory);
+// //Relations
+// db.Rig.belongsTo(db.CatchHistory);
+// db.CatchHistory.hasMany(db.Rig);
+// db.CatchHistory.belongsTo(db.User);
+// db.User.hasMany(db.CatchHistory);
 
 module.exports = db;
