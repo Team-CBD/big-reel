@@ -20,9 +20,11 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="icon" type="image/png" href="assets/img/socialRBA1lined.png">
 
+
+    
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="assets/js/index.js"></script>
-    <script src="assets/js/markers.js"></script>
+    <!-- <script src="assets/js/markers.js"></script> -->
 </head>
 
 <body>
@@ -57,18 +59,18 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <div class="container round-7">
-                    <form action="">
-                        <label for="label">Label:</label><br>
-                        <input type="text" id="label" name="label" value=""><br>
+                    <form action="/api/Rig" method="POST">
+                        <label for="rig_name">Rig name:</label><br>
+                        <input type="text" id="rig_name" name="rig_name"><br>
                         <label for="rod">Rod:</label><br>
-                        <input type="text" id="rod" name="rod" value=""><br>
-                        <label for="reel">Reel:</label><br>
-                        <input type="text" id="reel" name="reel" value=""><br>
+                        <input type="text" id="rod" name="rod"><br>
+                        <label for="reel">Line:</label><br>
+                        <input type="text" id="reel" name="reel"><br>
                         <label for="tackle">Tackle:</label><br>
-                        <input type="text" id="tackle" name="tackle" value=""><br>
+                        <input type="text" id="tackle" name="tackle"><br>
                         <label for="info">Info:</label><br>
-                        <input type="text" id="info" name="info" value=""><br><br>
-                        <input class="close" type="submit" value="Submit">
+                        <input type="text" id="info" name="info"><br><br>
+                        <input class="close" id="rigSubmitBtn" type="submit" value="Submit">
                     </form>
                 </div>
             </div>
@@ -149,6 +151,7 @@
                     <div class="listhead">
                         <div class="card-content black-text">
                             <span>Bass</span>
+                            <div id= "fishCatch"></div>
                         </div>
                     </div>
 
@@ -159,6 +162,7 @@
                     <div class="listhead">
                         <div class="card-content black-text">
                             <span>Rig Alpha</span>
+                            <div id= "rigCatch"></div>
                         </div>
                     </div>
 
@@ -169,6 +173,7 @@
                     <div class="listhead">
                         <div class="card-content black-text">
                             <span>2/5 5am</span>
+                            <div id= "timeCatch"></div>
                         </div>
                     </div>
                 </div>
@@ -178,6 +183,7 @@
                     <div class="listhead">
                         <div class="card-content black-text">
                             <span>33 x 45 N</span>
+                            <div id= "locCatch"></div>
                         </div>
                     </div>
 
@@ -218,11 +224,11 @@
     <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
 
     <!-- SCRIPTS -->
-    <script src="./assets/js/markers.js"></script>
+    <!-- <script src="./assets/js/markers.js"></script> -->
     <script src="./assets/js/index.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-        </script>
+        </script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
         </script>

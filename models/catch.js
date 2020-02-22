@@ -14,8 +14,6 @@ module.exports = function(sequelize, DataTypes)
         lat: DataTypes.DECIMAL(10, 7),
         
         lng: DataTypes.DECIMAL(10, 7),
-        
-        //userId: DataTypes.INTEGER,
 
         createdAt: 
         {

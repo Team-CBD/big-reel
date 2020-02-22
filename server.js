@@ -8,8 +8,6 @@ var db = require("./models");
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-// Body parser Middleware
-//app.use(bodyParser);
 
 app.use(express.static("public"));
 
