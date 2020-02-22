@@ -47,12 +47,12 @@ $(document).ready(function () {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-
+      console.log(currentPosition);
       // Get information for the form and add a popup tip window
       // Use jquery to grab the form element and get the data
       //var fishType = "PLACEHOLDER";
-      var fishType = $("#fish_type").val();
-      var rig_name = $("#rig_name").val();
+      var fishType = $("#fish_type").val().trim();
+      var rig_type = $("#rig_type").val().trim();
 
       console.log(fishType);
 
@@ -79,7 +79,7 @@ $(document).ready(function () {
         fish_type: fishType,
         lat: parseFloat(position.coords.latitude),
         lng: parseFloat(position.coords.longitude),
-        rig_name: rig_name
+        rig_type: rig_type
       };
       
       console.log(catchData);
@@ -92,56 +92,56 @@ $(document).ready(function () {
       });
     }
 
-/*  // GET catches from database when page loads
-  getCatches();
+  // GET catches from database when page loads
+  // getCatches();
 
-  // This function grabs the catches from the db and updates the view
-  function getCatches(){
-    $.get("/api/CatchHistory", function(data){
-      console.log(data);
+  // // This function grabs the catches from the db and updates the view
+  // function getCatches(){
+  //   $.get("/api/CatchHistory", function(data){
+  //     console.log(data);
 
-      // for each catch that our server sends us back
-    for (var i = 0; i < data.length; i++) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        // get CURRENT location
-        var currentPosition = {
-          lat: data[i].lat,
-          lng: data[i].lng
-        };
+  //     // for each catch that our server sends us back
+  //   for (var i = 0; i < data.length; i++) {
+  //     navigator.geolocation.getCurrentPosition(function (position) {
+  //       // get CURRENT location
+  //       var currentPosition = {
+  //         lat: data[i].lat,
+  //         lng: data[i].lng
+  //       };
   
-        var fishType = data[i].fish_type;
+  //       var fishType = data[i].fish_type;
   
-        console.log(fishType);
+  //       console.log(fishType);
   
-          // icon link 
-        var image = "http://maps.google.com/mapfiles/kml/shapes/fishing.png";
+  //         // icon link 
+  //       var image = "http://maps.google.com/mapfiles/kml/shapes/fishing.png";
   
-        // create a new google Maps marker
-        var newMarker = new google.maps.Marker({
-          position: currentPosition,
-          map: map,
-          icon: image,
-        }).addListener('click', function () {
-          map.setCenter(this.getPosition())
-          infoWindow.setPosition(this.getPosition());
-          infoWindow.setContent(`You Caught: ${fishType}!`);
-          infoWindow.open(map, this);
+  //       // create a new google Maps marker
+  //       var newMarker = new google.maps.Marker({
+  //         position: currentPosition,
+  //         map: map,
+  //         icon: image,
+  //       }).addListener('click', function () {
+  //         map.setCenter(this.getPosition())
+  //         infoWindow.setPosition(this.getPosition());
+  //         infoWindow.setContent(`{USER_HERE} has caught: ${fishType}!`);
+  //         infoWindow.open(map, this);
   
   
-        });
-        var fishCatchDiv = $("<div>").addClass("catchList").attr("id", "fish-catchList-" + i);
-        $("#fishCatch").append(fishCatchDiv).append(data[i].fish_type);
+  //       });
+  //       var fishCatchDiv = $("<div>").addClass("catchList").attr("id", "fish-catchList-" + i);
+  //       $("#fishCatch").append(fishCatchDiv).append(data[i].fish_type);
 
-        // var rigCatchDiv = $(<"div">).addClass("catchList").attr("id", "rig-catchList-" + i);
-        // $("#rigCatch").append(rigCatchDiv).append(data[i].rig);
+  //       // var rigCatchDiv = $(<"div">).addClass("catchList").attr("id", "rig-catchList-" + i);
+  //       // $("#rigCatch").append(rigCatchDiv).append(data[i].rig);
 
-        var timeCatchDiv = $("<div>").addClass("catchList").attr("id", "time-catchList-" + i);
-        $("#timeCatch").append(timeCatchDiv).append(data[i].beginTime);
+  //       var timeCatchDiv = $("<div>").addClass("catchList").attr("id", "time-catchList-" + i);
+  //       $("#timeCatch").append(timeCatchDiv).append(data[i].beginTime);
 
-      })
-    }
-    })
-  }*/
+  //     })
+  //   }
+  //   })
+  // }
 
   function rigDataSubmit(event){
     event.preventDefault();
