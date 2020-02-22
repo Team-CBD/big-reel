@@ -17,9 +17,11 @@ module.exports = function(sequelize, DataTypes)
         },
         rod: DataTypes.STRING,
 
-        line: DataTypes.STRING,
+        reel: DataTypes.STRING,
 
         tackle: DataTypes.STRING,
+
+        info: DataTypes.TEXT,
 
         createdAt: 
         {

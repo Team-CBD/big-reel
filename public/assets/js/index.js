@@ -1,5 +1,12 @@
 $(document).ready(function () {
   console.log("ready");
+
+  
+
+  $(document).on("click", "#fishLocationSubmitButton", fishDataSubmit);
+  $(document).on("submit", "#rigSubmitBtn", rigDataSubmit);
+
+
   var map, infoWindow;
   map = new google.maps.Map(document.getElementById("googleMap"), {
     center: {
@@ -32,9 +39,7 @@ $(document).ready(function () {
       'Error: Your browser doesn\'t support geolocation.');
     infoWindow.open(map);
   };
-
-  $(document).on("click", "#fishLocationSubmitButton", fishDataSubmit);
-
+  
   function fishDataSubmit(event) {
     event.preventDefault();
 
@@ -89,11 +94,84 @@ $(document).ready(function () {
           console.log("New POSTed Catch!");
           location.reload();
         }
+      })
+    })
+  }
+
+  // GET catches from database when page loads
+  getCatches();
+
+  // This function grabs the catches from the db and updates the view
+  function getCatches(){
+    $.get("/api/CatchHistory", function(data){
+      console.log(data);
+
+      // for each character that our server sends us back
+    for (var i = 0; i < data.length; i++) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        // get CURRENT location
+        var currentPosition = {
+          lat: data[i].lat,
+          lng: data[i].lng
+        };
+  
+        var fishType = data[i].fish_type;
+  
+        console.log(fishType);
+  
+          // icon link 
+        var image = "http://maps.google.com/mapfiles/kml/shapes/fishing.png";
+  
+        // create a new google Maps marker
+        var newMarker = new google.maps.Marker({
+          position: currentPosition,
+          map: map,
+          icon: image,
+        }).addListener('click', function () {
+          map.setCenter(this.getPosition())
+          infoWindow.setPosition(this.getPosition());
+          infoWindow.setContent(`{USER_HERE} has caught: ${fishType}!`);
+          infoWindow.open(map, this);
+  
+  
+        });
+        var fishCatchDiv = $("<div>").addClass("catchList").attr("id", "fish-catchList-" + i);
+        $("#fishCatch").append(fishCatchDiv).append(data[i].fish_type);
+
+        // var rigCatchDiv = $(<"div">).addClass("catchList").attr("id", "rig-catchList-" + i);
+        // $("#rigCatch").append(rigCatchDiv).append(data[i].rig);
+
+        var timeCatchDiv = $("<div>").addClass("catchList").attr("id", "time-catchList-" + i);
+        $("#timeCatch").append(timeCatchDiv).append(data[i].beginTime);
 
       })
-
+    }
     })
-
-
   }
+
+  function rigDataSubmit(event){
+    event.preventDefault();
+
+    //Make a new rig
+    var newRig = {
+      rig_name: $("#rig_name").val().trim(),
+      rod: $("#rod").val().trim(),
+      reel: $("#reel").val().trim(),
+      tackle: $("#tackle").val().trim(),
+      info: $("#info").val().trim()
+    };
+
+    $.post("/api/Rig", newRig)
+    .then(function(data){
+      console.log(data);
+    });
+
+    //empty each input box by replacing the value with an empty string
+    $("#rig_name").val("");
+    $("#rod").val("");
+    $("#reel").val("");
+    $("#tackle").val("");
+    $("#info").val("");
+  }
+
 })

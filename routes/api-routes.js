@@ -63,7 +63,29 @@ module.exports = function(app)
         });
     });
 
-    
+    // If a user sends data to add a new rig...
+  app.post("/api/Rig", function(req, res) {
+    // Take the request...
+    var newRig = req.body;
+
+    // Create a routeName
+
+    // Using a RegEx Pattern to remove spaces from newRig.name
+    var routeName = newRig.rig_name.replace(/\s+/g, "").toLowerCase();
+
+    // Then add the rig to the database using sequelize
+    db.Rig.create({
+      routeName: routeName,
+      rig_name: newRig.rig_name,
+      rod: newRig.rod,
+      reel: newRig.reel,
+      tackle: newRig.tackle,
+      info: newRig.info
+    });
+
+    console.log("New rig Added!")
+    res.status(204).end();
+  });
 
       
 

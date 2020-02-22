@@ -43,4 +43,12 @@ db.Tackle = require("./tackle.js")(sequelize, Sequelize);
 db.User = require("./user.js")(sequelize, Sequelize);
 //dependencies go here possibly
 
+
+
+//Relations
+db.Rig.belongsTo(db.CatchHistory);
+db.CatchHistory.hasMany(db.Rig);
+db.CatchHistory.belongsTo(db.User);
+db.User.hasMany(db.CatchHistory);
+
 module.exports = db;
