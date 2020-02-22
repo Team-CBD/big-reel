@@ -60,7 +60,8 @@ module.exports = function(app)
         db.CatchHistory.create({
             fish_type,
             lat,
-            lng
+            lng,
+            rig_name
         })
         .then(function(){
             console.log("New catch added!");

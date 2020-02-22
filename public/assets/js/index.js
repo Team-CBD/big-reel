@@ -51,8 +51,8 @@ $(document).ready(function () {
       // Get information for the form and add a popup tip window
       // Use jquery to grab the form element and get the data
       //var fishType = "PLACEHOLDER";
-      var fishType = $("#fishType").val();
-      var rigName = $("#rigName").val();
+      var fishType = $("#fish_type").val();
+      var rig_name = $("#rig_name").val();
 
       console.log(fishType);
 
@@ -79,7 +79,7 @@ $(document).ready(function () {
         fish_type: fishType,
         lat: parseFloat(position.coords.latitude),
         lng: parseFloat(position.coords.longitude),
-        rig_id: rigName
+        rig_name: rig_name
       };
       
       console.log(catchData);

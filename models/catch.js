@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes)
         
         lng: DataTypes.DECIMAL(10, 7),
 
-        rig: DataTypes.STRING,
+        rig_name: DataTypes.STRING,
 
         createdAt: 
         {

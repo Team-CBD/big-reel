@@ -125,6 +125,7 @@
       bait_type: bait,
       lat: latData,
       lng: lngData,
+      rig_name: rig
     };
 
     //Send the POST for newCatch to db 
