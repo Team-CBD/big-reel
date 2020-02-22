@@ -55,7 +55,7 @@ module.exports = function(app)
         // create takes an argument of an object describing the item we want to
         // insert into our table. In this case we just we pass in an object with a text
         // and complete property
-        let { fish_type, lat, lng } = req.body;
+        let { fish_type, lat, lng, rig_name } = req.body;
 
         db.CatchHistory.create({
             fish_type,

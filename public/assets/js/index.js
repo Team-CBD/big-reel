@@ -92,7 +92,7 @@ $(document).ready(function () {
       });
     }
 
-  // GET catches from database when page loads
+/*  // GET catches from database when page loads
   getCatches();
 
   // This function grabs the catches from the db and updates the view
@@ -124,7 +124,7 @@ $(document).ready(function () {
         }).addListener('click', function () {
           map.setCenter(this.getPosition())
           infoWindow.setPosition(this.getPosition());
-          infoWindow.setContent(`{USER_HERE} has caught: ${fishType}!`);
+          infoWindow.setContent(`You Caught: ${fishType}!`);
           infoWindow.open(map, this);
   
   
@@ -141,7 +141,7 @@ $(document).ready(function () {
       })
     }
     })
-  }
+  }*/
 
   function rigDataSubmit(event){
     event.preventDefault();
