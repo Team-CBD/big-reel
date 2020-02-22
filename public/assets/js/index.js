@@ -1,11 +1,9 @@
 $(document).ready(function () {
   console.log("ready");
 
-  
-
+  // Event listeners
   $(document).on("click", "#fishLocationSubmitButton", fishDataSubmit);
   $(document).on("submit", "#rigSubmitBtn", rigDataSubmit);
-
 
   var map, infoWindow;
   map = new google.maps.Map(document.getElementById("googleMap"), {
@@ -41,7 +39,7 @@ $(document).ready(function () {
   };
   
   function fishDataSubmit(event) {
-    event.preventDefault();
+    event.stopPropagation();
 
     navigator.geolocation.getCurrentPosition(function (position) {
       // get CURRENT location
@@ -77,26 +75,20 @@ $(document).ready(function () {
 
       /// Need help with POST problem is probably in the api-routes //////////
       var catchData = {
-
         fish_type: "BASS",
         lat: parseFloat(position.coords.latitude),
         lng: parseFloat(position.coords.longitude)
-
       };
-
+      
+      console.log(catchData);
       //Send the POST for newCatch to db 
-      $.ajax({
-        type: "POST",
-        url: "/api/CatchHistory",
-        data: catchData
-      }).then({
-        function() {
-          console.log("New POSTed Catch!");
+      $.post("/api/CatchHistory", catchData)
+      .then(function(data) {
+          console.log(data);
           location.reload();
-        }
-      })
-    })
-  }
+        });
+      });
+    }
 
   // GET catches from database when page loads
   getCatches();
@@ -106,7 +98,7 @@ $(document).ready(function () {
     $.get("/api/CatchHistory", function(data){
       console.log(data);
 
-      // for each character that our server sends us back
+      // for each catch that our server sends us back
     for (var i = 0; i < data.length; i++) {
       navigator.geolocation.getCurrentPosition(function (position) {
         // get CURRENT location
@@ -163,7 +155,8 @@ $(document).ready(function () {
 
     $.post("/api/Rig", newRig)
     .then(function(data){
-      console.log(data);
+      console.log("Rig data: "+ data);
+      location.reload();
     });
 
     //empty each input box by replacing the value with an empty string

@@ -55,12 +55,18 @@ module.exports = function(app)
         // create takes an argument of an object describing the item we want to
         // insert into our table. In this case we just we pass in an object with a text
         // and complete property
-        db.CatchHistory.create(req.body).then(function(dbCatchHistory) {
-            console.log(dbCatchHistory);
-        // We have access to the new catch as an argument inside of the callback function
-        res.json(dbCatchHistory);
-        res.status(204).end();
-        });
+        let { fish_type, lat, lng } = req.body;
+
+        db.CatchHistory.create({
+            fish_type,
+            lat,
+            lng
+        })
+        .then(function(){
+            console.log("New catch added!");
+            res.status(204).end();
+        })
+        .catch(err => console.log(err));
     });
 
     // If a user sends data to add a new rig...
@@ -69,7 +75,6 @@ module.exports = function(app)
     var newRig = req.body;
 
     // Create a routeName
-
     // Using a RegEx Pattern to remove spaces from newRig.name
     var routeName = newRig.rig_name.replace(/\s+/g, "").toLowerCase();
 
