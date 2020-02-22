@@ -16,7 +16,7 @@ INSERT INTO user (username) VALUES ("Sally951");
 INSERT INTO user (username) VALUES ("Bob123");
 INSERT INTO user (username) VALUES ("Rick808");
 
-INSERT INTO rig (rig_type, rod, reel, tackle, info)
+INSERT INTO rig (rig_name, rod, reel, tackle, info)
 VALUES ("Alpha", "6ft", "5 lbs", "worm", "test 1"),
 ("Beta", "6ft", "7 lbs", "fly", "test 2"),
 ("Gamma", "5ft", "4 lbs", "lure", "test 3");

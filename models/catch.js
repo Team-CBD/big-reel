@@ -1,4 +1,5 @@
 "use strict"
+var moment = require("moment");
 module.exports = function(sequelize, DataTypes)
 {
     var CatchHistory = sequelize.define("CatchHistory",{
@@ -21,6 +22,10 @@ module.exports = function(sequelize, DataTypes)
         {
             type: DataTypes.DATE,
             field: 'beginTime',
+            get: function()
+            {
+                return moment(this.getDataValue("createdAt")).format("MM/DD, h:mm a")
+            },
             defaultValue: sequelize.literal('NOW()')
         },
         updatedAt: 
