@@ -40,7 +40,7 @@ $(document).ready(function () {
   
   function fishDataSubmit(event) {
     event.stopPropagation();
-
+    event.preventDefault();
     navigator.geolocation.getCurrentPosition(function (position) {
       // get CURRENT location
       var currentPosition = {
