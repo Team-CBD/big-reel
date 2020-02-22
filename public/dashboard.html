@@ -70,8 +70,7 @@
                                 </div>
                                 </br></br>
                                 <div class="col s5 m5 right">
-                                <button class="catchclose btn btn-success" data-dismiss="modal"
-                                    id="fishLocationSubmitButton" type="submit">SAVE</button>
+                                <button class="catchclose btn btn-success" id="fishLocationSubmitButton" type="submit" onClick="this.form.reset()">SAVE</button>
                                 </div>
                                 </div>
                             </form>
@@ -84,7 +83,7 @@
                 </div>
                 <div id="rigModal" class="modal2 modal">
                     <div class="modal-content">
-                        <span class="rigclose close">&times;</span>
+                        <span class="rigClose close">&times;</span>
                         <div class="container round-7">
                             <form action="/api/Rig" method="POST">
                                 <label for="rig_name">Rig Name:</label><br>
@@ -97,7 +96,7 @@
                                 <input type="text" id="tackle" name="tackle" value=""><br>
                                 <label for="info">Conditions:</label><br>
                                 <input type="text" id="info" name="info" value=""><br><br>
-                                <button class="close btn btn-success" id="rigBtn" type="submit" value="Save" onClick="this.form.reset()">SAVE</button>
+                                <button class="rigClose btn btn-success" id="rigBtn" type="submit" value="Save" onClick="this.form.reset()">SAVE</button>
                             </form>
                         </div>
                     </div>
@@ -256,7 +255,7 @@
         var btn = document.getElementById("rigBtn");
 
         // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("rigclose")[0];
+        var span = document.getElementsByClassName("rigClose")[0];
 
         // When the user clicks the button, open the modal 
         btn.onclick = function () {
